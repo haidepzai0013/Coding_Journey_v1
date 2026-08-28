@@ -39,6 +39,7 @@ void bieu_dien(int** matrix, int row, int col) {
 	}
 	printf("═╝\n");
 }
+//Pathfinding
 bool pathfinding(int** maze, int row, int col, int row_b, int col_b, int row_c, int col_c) {
 	bool path;
 	int e;
