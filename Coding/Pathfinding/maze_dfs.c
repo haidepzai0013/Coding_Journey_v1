@@ -244,6 +244,9 @@ int main() {
 	printf("—— Me cung cua ban ——\n");
 	bieu_dien(matran, hang, cot);
 	huong = pathfinding(matran, hang, cot, hang_b, cot_b, hang_c, cot_c);
+	if(huong == false) {
+		printf("\033[1m\nKhong the tim thay dich den\n\033[0m");
+	}
 	for(a = 0; a < hang; a++) {
 		free(matran[a]);
 	}
