@@ -46,7 +46,10 @@ bool pathfinding(int** maze, int row, int col, int row_b, int col_b, int row_c, 
 	int row_d = row_b, col_d = col_b;
 	if(maze[row_d][col_d] != 3) {
 		//Trai
-		while(((col_d - 1 >= 0 && maze[row_d][col_d - 1] != 1) && (maze[row_d][col_d - 1] != 4 && maze[row_d][col_d - 1] != 5)) && maze[row_d][col_d] != 3) {
+		while((col_d - 1 >= 0 && maze[row_d][col_d - 1] != 1) && (maze[row_d][col_d - 1] != 4 && maze[row_d][col_d - 1] != 5)) {
+			if(maze[row_d][col_d] == 3) {
+				break;
+			}
 			if(maze[row_d][col_d - 1] != 3) {
 				maze[row_d][col_d - 1] = 2;
 			}
@@ -56,7 +59,7 @@ bool pathfinding(int** maze, int row, int col, int row_b, int col_b, int row_c, 
 			bieu_dien(maze, row, col);
 			usleep(150000);
 			dem++;
-			if((row_d + 1 < row && maze[row_d + 1][col_d] == 0) || (row_d - 1 > 0 && maze[row_d - 1][col_d] == 0)) {
+			if((row_d + 1 < row && maze[row_d + 1][col_d] != 1) || (row_d - 1 >= 0 && maze[row_d - 1][col_d] != 1)) {
 				break;
 			}
 		}
@@ -78,7 +81,10 @@ bool pathfinding(int** maze, int row, int col, int row_b, int col_b, int row_c, 
 		}
 		dem = 0;
 		//Len
-		while(((row_d - 1 >= 0 && maze[row_d - 1][col_d] != 1) && (maze[row_d - 1][col_d] != 4 && maze[row_d - 1][col_d] != 5)) && maze[row_d][col_d] != 3) {
+		while((row_d - 1 >= 0 && maze[row_d - 1][col_d] != 1) && (maze[row_d - 1][col_d] != 4 && maze[row_d - 1][col_d] != 5)) {
+			if(maze[row_d][col_d] == 3) {
+				break;
+			}
 			if(maze[row_d - 1][col_d] != 3) {
 				maze[row_d - 1][col_d] = 2;
 			}
@@ -88,7 +94,7 @@ bool pathfinding(int** maze, int row, int col, int row_b, int col_b, int row_c, 
 			bieu_dien(maze, row, col);
 			usleep(150000);
 			dem++;
-			if((col_d + 1 < col && maze[row_d][col_d + 1] == 0) || (col_d - 1 > 0 && maze[row_d][col_d - 1] == 0)) {
+			if((col_d + 1 < col && maze[row_d][col_d + 1] != 1) || (col_d - 1 >= 0 && maze[row_d][col_d - 1] != 1)) {
 				break;
 			}
 		}
@@ -110,7 +116,10 @@ bool pathfinding(int** maze, int row, int col, int row_b, int col_b, int row_c, 
 		}
 		dem = 0;
 		//Phai
-		while(((col_d + 1 < col && maze[row_d][col_d + 1] != 1) && (maze[row_d][col_d + 1] != 4 && maze[row_d][col_d + 1] != 5)) && maze[row_d][col_d] != 3) {
+		while((col_d + 1 < col && maze[row_d][col_d + 1] != 1) && (maze[row_d][col_d + 1] != 4 && maze[row_d][col_d + 1] != 5)) {
+			if(maze[row_d][col_d] == 3) {
+				break;
+			}
 			if(maze[row_d][col_d + 1] != 3) {
 				maze[row_d][col_d + 1] = 2;
 			}
@@ -120,7 +129,7 @@ bool pathfinding(int** maze, int row, int col, int row_b, int col_b, int row_c, 
 			bieu_dien(maze, row, col);
 			usleep(150000);
 			dem++;
-			if((row_d + 1 < row && maze[row_d + 1][col_d] == 0) || (row_d - 1 > 0 && maze[row_d - 1][col_d] == 0)) {
+			if((row_d + 1 < row && maze[row_d + 1][col_d] != 1) || (row_d - 1 >= 0 && maze[row_d - 1][col_d] != 1)) {
 				break;
 			}
 		}
@@ -142,7 +151,10 @@ bool pathfinding(int** maze, int row, int col, int row_b, int col_b, int row_c, 
 		}
 		dem = 0;
 		//Duoi
-		while(((row_d + 1 < row && maze[row_d + 1][col_d] != 1) && (maze[row_d + 1][col_d] != 4 && maze[row_d + 1][col_d] != 5)) && maze[row_d][col_d] != 3) {
+		while((row_d + 1 < row && maze[row_d + 1][col_d] != 1) && (maze[row_d + 1][col_d] != 4 && maze[row_d + 1][col_d] != 5)) {
+			if(maze[row_d][col_d] == 3) {
+				break;
+			}
 			if(maze[row_d + 1][col_d] != 3) {
 				maze[row_d + 1][col_d] = 2;
 			}
@@ -152,7 +164,7 @@ bool pathfinding(int** maze, int row, int col, int row_b, int col_b, int row_c, 
 			bieu_dien(maze, row, col);
 			usleep(150000);
 			dem++;
-			if((col_d + 1 < col && maze[row_d][col_d + 1] == 0) || (col_d - 1 > 0 && maze[row_d][col_d - 1] == 0)) {
+			if((col_d + 1 < col && maze[row_d][col_d + 1] != 1) || (col_d - 1 >= 0 && maze[row_d][col_d - 1] != 1)) {
 				break;
 			}
 		}
