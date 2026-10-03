@@ -13,63 +13,53 @@ void bieu_dien(int** matran_a, int hang_a, int cot_a) {
 void sap_xep(int** matrix, int row, int col) {
 	int e = 0, f = 0;
 	int g = 0, h = 0;
-	int i = 1, j = 1, k = 1;
-	int m, n;
+	int i = 1;
 	int temp;
 	int luot = 1;
 	int dem = 0;
+	int l = 0;
 	int size = row * col;
-	for(e = 0; e < row; e++) {
-		for(f = 0; f < col; f++) {
-			dem = 0;
-			for(m = 0; m < row; m++) {
-				g = m;
-				for(n = 0; n < col; n++) {
-					if(dem == (row * col) - 1) {
-						if(luot == 1) {
-							printf("\n\033[1mMa tran trung lap hoac da sap xep!\033[0m");
-						}
-						return;
-					}
-					if(m == row - 1 && n == col - 1) {
-						break;
-					}
-					h = n + 1;
-					if(h == col) {
-						g++;
-						h = 0;
-					}
-					if(matrix[m][n] <= matrix[g][h]) {
-						dem++;
-					}
-				}
-			}
-			g = e;
-			if((e * col + f) == size - i) {
-				i++;
-				j = (i / col) + 1;
-				k = i % col;
-				e = -1;
+	while(e < row && f < col) {
+		g = e;
+		if((e * col + f) >= size - i) {
+			if(dem == row * col - i) {
 				break;
-			}
-			h = f + 1;
-			if(h == col) {
-				g++;
-				h = 0;
-			}
-			if(matrix[g][h] >= matrix[e][f]) {
-				printf("\n--- Luot phu ---\nGiu nguyen (Phan tu [%d][%d] da dung vi tri)", e + 1, f + 1);
-				continue;
-			}
-			else {
-				temp = matrix[e][f];
-				matrix[e][f] = matrix[g][h];
-				matrix[g][h] = temp;
-			}
-			printf("\n--- Luot %d ---", luot);
-			bieu_dien(matrix, row, col);
-			luot++;
+			} 
+			i++;
+			e = 0;
+			f = 0;
+			continue;
 		}
+		h = f + 1;
+		if(h == col) {
+			g++;
+			h = 0;
+		}
+		if(matrix[g][h] >= matrix[e][f]) {
+			dem++;
+			f++;
+			if(f == col) {
+				f = 0;
+				e++;
+			}
+			continue;
+		} 
+		else {
+			temp = matrix[e][f];
+			matrix[e][f] = matrix[g][h];
+			matrix[g][h] = temp;
+		}
+		printf("\n--- Luot %d ---", luot);
+		bieu_dien(matrix, row, col);
+		luot++;
+		f++;
+		if(f == col) {
+			f = 0;
+			e++;
+		}
+	}
+	if(dem == row * col - 1 && luot == 1) {
+		printf("\n\033[1m'Ma tran trung lap hoac da sap xep'\033[0m\n");
 	}
 }
 int main() {
@@ -96,5 +86,11 @@ int main() {
 	sap_xep(matran, hang, cot);
 	printf("\033[1m\n—— Ket qua cuoi cung ——");
 	bieu_dien(matran, hang, cot);
+	for(a = 0; a < hang; a++) {
+		free(matran[a]);
+		matran[a] = NULL;
+	}
+	free(matran);
+	matran = NULL;
 	return 0;
 }
