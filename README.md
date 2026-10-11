@@ -20,6 +20,8 @@ This is everything I've done over the past 3  months, and I'm posting it here to
 - Month 3-4:
 	- Pathfinding:
 		+ maze_dfs.c
+	- Search:
+		+ linear_search.c (With linked list)
 	- Sort:
 		- Matrix:
 			+ matrix_bubble_sort (Update)
