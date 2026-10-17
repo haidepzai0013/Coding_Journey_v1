@@ -25,4 +25,4 @@ This is everything I've done over the past 3  months, and I'm posting it here to
 		+ jump_search.c
 	- Sort:
 		- Matrix:
-			+ matrix_bubble_sort (Update)
+			+ matrix_bubble_sort.c (Update)
