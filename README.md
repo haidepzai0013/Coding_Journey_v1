@@ -1,6 +1,6 @@
 # Coding_Journey_v1
 This is everything I've done over the past 4 months, and I'm posting it here to keep it as a significant milestone for my future (studying at MIT and Stanford).
-Month 1-2:
+\nMonth 1-2:
 - C:
 	- Game:
 		+ caro.c
@@ -17,7 +17,7 @@ Month 1-2:
 		+ matrix_insertion_sort.c
 		+ matrix_selection_sort.c
 	- Sort/Array: (None)
-Month 3-4:
+\nMonth 3-4:
 - C
 	- Pathfinding:
 		+ maze_dfs.c
