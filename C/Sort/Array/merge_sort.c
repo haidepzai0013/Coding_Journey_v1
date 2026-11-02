@@ -65,25 +65,26 @@ void divide(struct element** arr3, int* temp3, int size3, int left3, int right3)
 	divide(&(*arr3), temp3, size3, left3, mid3);
 	merge(&(*arr3), &temp3, size3, left3, (left3 + mid3)/2, mid3);
 	
+	(*arr3)[left3].color = 1;
+    (*arr3)[mid3].color = 1;
+     
+	for (f = left3; f <= mid3; f++) {
+		(*arr3)[f].data = temp3[f];
+		if (f != left3 && f != mid3) {
+	   		(*arr3)[f].color = 2;
+	   	}
+	   	printf("\033[1A\033[J");
+	   	print((*arr3), size3);
+	    usleep(250000);
+	}
+
+	(*arr3)[left3].color = 2;
+	(*arr3)[mid3].color = 2;
+	
 	//RIGHT
 	divide(&(*arr3), temp3, size3, mid3 + 1, right3);
 	merge(&(*arr3), &temp3, size3, mid3 + 1, (right3 + mid3 + 1)/2, right3);
-	
-	(*arr3)[left3].color = 1;
-	(*arr3)[mid3].color = 1;
-	
-	for (f = left3; f <= mid3; f++) {
-	    (*arr3)[f].data = temp3[f];
-	    if (f != left3 && f != mid3) {
-	        (*arr3)[f].color = 2;
-	    }
-	    printf("\033[1A\033[J");
-	    print((*arr3), size3);
-	    usleep(250000);
-	}
-	
-	(*arr3)[left3].color = 2;
-	(*arr3)[mid3].color = 2;
+
 	(*arr3)[mid3 + 1].color = 1;
 	(*arr3)[right3].color = 1;
 	
